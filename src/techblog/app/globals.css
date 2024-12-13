@@ -2,20 +2,174 @@
 @tailwind components;
 @tailwind utilities;
 
+/* カラーテーマ設定 */
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  --background: #f7f9fa;
+  --foreground: #333333;
+  --link: #3d85c6;
+  --link-hover: #265a88;
+  --border: #e1e4e8;
+  --code-bg: #f6f8fa;
+  --code-border: #e1e4e8;
+  --code-color: #2d2d2d;
 }
 
 @media (prefers-color-scheme: dark) {
   :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
+    --background: #181818;
+    --foreground: #e0e0e0;
+    --link: #9ecbff;
+    --link-hover: #68a7e3;
+    --border: #333333;
+    --code-bg: #242424;
+    --code-border: #444444;
+    --code-color: #f1f1f1;
   }
 }
 
+/* 全体のスタイル */
 body {
-  color: var(--foreground);
   background: var(--background);
-  font-family: Arial, Helvetica, sans-serif;
+  color: var(--foreground);
+  font-family: 'Noto Sans JP', Arial, Helvetica, sans-serif;
+  line-height: 1.8;
+  margin: 0;
+  padding: 0;
+}
+
+/* ヘッダー */
+header {
+  background: var(--link);
+  color: white;
+  padding: 1rem 2rem;
+  font-size: 1.25rem;
+  font-weight: bold;
+}
+
+/* 見出し */
+h1, h2, h3, h4, h5, h6 {
+  font-weight: bold;
+  line-height: 1.5;
+}
+
+h1 {
+  font-size: 2.5rem;
+  margin-bottom: 1rem;
+  border-bottom: 2px solid var(--border);
+  padding-bottom: 0.5rem;
+}
+
+h2 {
+  font-size: 2rem;
+  margin-bottom: 0.75rem;
+  border-left: 4px solid var(--link);
+  padding-left: 0.75rem;
+}
+
+h3 {
+  font-size: 1.5rem;
+  margin-bottom: 0.5rem;
+}
+
+/* リンク */
+a {
+  color: var(--link);
+  text-decoration: none;
+}
+
+a:hover {
+  color: var(--link-hover);
+  text-decoration: underline;
+}
+
+/* 段落 */
+p {
+  margin-bottom: 1.25rem;
+}
+
+/* コードブロック全体のスタイル */
+pre {
+  background-color: #2c223b; /* ダークな背景色 */
+  border-radius: 8px;
+  padding: 1rem;
+  overflow-x: auto;
+  color: #f8f8f2; /* メインのフォントカラー */
+  font-family: 'Courier New', Courier, monospace;
+  margin-bottom: 1.5rem;
+}
+
+/* コード内の要素を個別にカスタマイズ */
+pre code {
+  font-size: 1rem;
+}
+
+/* テーブル */
+table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-bottom: 1.5rem;
+}
+
+th, td {
+  padding: 0.75rem;
+  text-align: left;
+  border: 1px solid var(--border);
+}
+
+th {
+  background-color: var(--code-bg);
+  color: var(--foreground);
+  font-weight: bold;
+}
+
+/* リスト */
+ul, ol {
+  margin-bottom: 1.5rem;
+  padding-left: 2rem;
+}
+
+li {
+  margin-bottom: 0.5rem;
+}
+
+/* ボタン */
+button {
+  background: var(--link);
+  color: white;
+  border: none;
+  padding: 0.75rem 1.5rem;
+  border-radius: 8px;
+  font-size: 1rem;
+  cursor: pointer;
+}
+
+button:hover {
+  background: var(--link-hover);
+}
+
+/* 引用 */
+blockquote {
+  margin: 1.5rem 0;
+  padding: 1rem;
+  background: var(--code-bg);
+  border-left: 4px solid var(--link);
+  color: var(--foreground);
+  font-style: italic;
+}
+
+/* 画像 */
+img {
+  max-width: 100%;
+  height: auto;
+  border-radius: 8px;
+}
+
+/* フッター */
+footer {
+  text-align: center;
+  padding: 2rem 0;
+  background: var(--code-bg);
+  color: var(--foreground);
+  font-size: 0.875rem;
+  border-top: 1px solid var(--border);
 }
