@@ -7,6 +7,7 @@ notionのデータベースとNext.jsを使ってブログサイトを作りた�
 * 権限があるユーザーは、ブログにコメントを残せるようにしたい
 
 ## 必要な技術
+* Notionのページを取得し、マークダウンにするライブラリ→notion-to-md
 * Notionから文書を受け取るライブラリ→
 * マークダウンで書かれた文書をHTMLにパースするライブラリ→react-markdown
 https://github.com/remarkjs/react-markdown
