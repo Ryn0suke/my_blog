@@ -22,8 +22,8 @@ export default async function RootLayout({
   const [postsProperties, tags] = await getDataFromDatabase();
 
   return (
-    <html lang="ja">
-      <body className="bg-emerald-100">
+    <html lang='ja'>
+      <body className='bg-emerald-100'>
         <div>
           {/* ヘッダー部分 */}
           <Header />
@@ -32,9 +32,9 @@ export default async function RootLayout({
           <ButtonList tags={tags}/>
 
           <NotionInfoProvider data={[postsProperties, tags]}>
-            <div className="flex flex-col md:flex-row justify-center gap-4 p-4">
+            <div className='flex flex-col md:flex-row justify-center gap-4 p-4'>
               {/* 中身の要素が入る部分 */}
-              <div className="flex-1">{children}</div>
+              <div className='flex-1'>{children}</div>
 
               {/* アイコン */}
               <MyIcon />

@@ -1,4 +1,4 @@
-import FilteredPosts from "../filteredPosts";
+import FilteredPosts from '../filteredPosts';
 
 export default async function Page({
   params,
@@ -8,7 +8,7 @@ export default async function Page({
   const tag = decodeURIComponent((await params).slug);
 
   return (
-    <div className="container mx-auto">
+    <div className='container mx-auto'>
       <FilteredPosts tag={tag} />
     </div>
   );

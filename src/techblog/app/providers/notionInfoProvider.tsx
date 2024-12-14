@@ -1,6 +1,6 @@
-"use client";
-import React, { createContext } from "react";
-import { NotionProperties } from "../types/notion";
+'use client';
+import React, { createContext } from 'react';
+import { NotionProperties } from '../types/notion';
 
 type NotionContextType = [NotionProperties[], string[]] | null;
 
