@@ -12,7 +12,7 @@ export default function BlogCard({ property }: { property: NotionProperties }) {
         著者：{property.name}
       </p>
       <p className="mb-3 font-normal text-gray-700 dark:text-gray-400">
-        作成日：{property.createdate}
+        投稿日：{property.createdate}
       </p>
       <a
         href={`/blog/${property.id}`}

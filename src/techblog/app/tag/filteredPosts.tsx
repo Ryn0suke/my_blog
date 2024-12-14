@@ -7,7 +7,7 @@ import BlogCard from "@/components/blogCard";
 
 export default function FilteredPosts({ tag }: { tag: string }) {
   const data = useContext(NotionContext);
-  
+
   const postsProperties = data
     ? data[0].filter((property: NotionProperties) => property.types.includes(tag))
     : [];

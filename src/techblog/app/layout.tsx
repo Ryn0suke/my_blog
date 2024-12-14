@@ -20,7 +20,6 @@ export default async function RootLayout({
 }>) {
   //ButtonListコンポーネントの中のボタンを動的に変更するため、Layoutでデータをフェッチする
   const [postsProperties, tags] = await getDataFromDatabase();
-  console.log(postsProperties);
 
   return (
     <html lang="ja">

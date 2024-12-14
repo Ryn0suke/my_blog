@@ -6,8 +6,7 @@ services:
     volumes:
       - ./src:/app
 
-    # 環境ファイルを読み込み (https://docs.docker.jp/compose/environment-variables.html)
-    working_dir: "/app/${PROJECT_NAME}"
+    working_dir: "/app/techblog"
     command: sh -c "npm run dev"
     ports:
       - "15000:3000"

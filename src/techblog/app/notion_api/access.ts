@@ -1,7 +1,7 @@
 import { NotionProperties, NotionTag } from "../types/notion";
 
-const { Client } = require("@notionhq/client");
-const { NotionToMarkdown } = require("notion-to-md");
+import { Client } from "@notionhq/client";
+import { NotionToMarkdown } from "notion-to-md";
 
 const notion = new Client({
   auth: process.env.NOTION_TOKEN,
@@ -14,15 +14,14 @@ const n2m = new NotionToMarkdown({notionClient: notion});
 //データベースに登録されているページの情報を取得
 //記事のタイトル, 作成日, 最終更新日, プライベートかどうか, 
 export async function getDataFromDatabase(): Promise<[NotionProperties[], string[]]> {
-    const response = await notion.databases.query({
-        database_id: process.env.DATABASE_ID,
-    })
 
-    console.log(response);
+    const response = await notion.databases.query({
+        database_id: process.env.DATABASE_ID !== undefined ? process.env.DATABASE_ID : "",
+    })
 
     //ブログのタグのリストを作るために作成
     //重複を許したくないためSetを使用する
-    let tags = new Set<string>();
+    const tags = new Set<string>();
 
     const postsProperties = response.results.map((value:any) => {
         try {
@@ -40,7 +39,6 @@ export async function getDataFromDatabase(): Promise<[NotionProperties[], string
 
             return {id, name, createdate, isPrivate, title, types}
         } catch (e:any) {
-            console.log(e.message);
             return null;
         }
     })
@@ -54,3 +52,27 @@ export async function getPagesFromDatabase(id:string) {
     return mdString.parent;
 }
 
+type NotionPostInfo = {
+    title:  string | undefined;
+    date: string | undefined;
+    author: string | undefined
+  };
+  
+  export async function getPageInfo(pageId: string): Promise<NotionPostInfo> {
+    const response = await notion.pages.retrieve({ page_id: pageId });
+
+    if("properties" in response) {
+        const pageInfo = response.properties;
+
+        if(!("title" in pageInfo.title)) return {title:"", date: "", author: ""};
+        if(!("date" in pageInfo.createdate)) return {title:"", date: "", author: ""};
+        if(!("select" in pageInfo.author)) return {title:"", date: "", author: ""};
+        
+
+        const title = pageInfo.title.title[0]?.plain_text
+        const date = pageInfo.createdate.date?.start
+        const author = pageInfo.author.select?.name
+        return { title, date, author }
+    }
+    return { title: "", date: "", author: "" };
+  }
