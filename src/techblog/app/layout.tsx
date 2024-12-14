@@ -5,7 +5,6 @@ import Header from '@/components/header';
 import ButtonList from '@/components/buttonList';
 import MyIcon from '@/components/myIcon';
 
-import { getDataFromDatabase } from './notion_api/access';
 import NotionInfoProvider from './providers/notionInfoProvider';
 
 export const metadata: Metadata = {
@@ -19,7 +18,6 @@ export default async function RootLayout({
   children: React.ReactNode;
 }>) {
   //ButtonListコンポーネントの中のボタンを動的に変更するため、Layoutでデータをフェッチする
-  const [postsProperties, tags] = await getDataFromDatabase();
 
   return (
     <html lang='ja'>
@@ -28,10 +26,9 @@ export default async function RootLayout({
           {/* ヘッダー部分 */}
           <Header />
 
-          {/* メニューボタン */}
-          <ButtonList tags={tags}/>
-
-          <NotionInfoProvider data={[postsProperties, tags]}>
+          <NotionInfoProvider>
+            {/* メニューボタン */}
+            <ButtonList/>
             <div className='flex flex-col md:flex-row justify-center gap-4 p-4'>
               {/* 中身の要素が入る部分 */}
               <div className='flex-1'>{children}</div>
