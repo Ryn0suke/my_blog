@@ -16,8 +16,6 @@ export default function NotionInfoProvider({ children }: { children: React.React
         const result = await response.json();
         const data:NotionContextType = [result.postsProperties, result.tags];
         setData(data);
-        console.log(result);
-
       } catch(error:unknown) {
         console.error(error);
       }
@@ -25,7 +23,8 @@ export default function NotionInfoProvider({ children }: { children: React.React
 
 
     fetchData();
-    const intervalId = setInterval(fetchData, 30000);
+    //1h毎にフェッチ
+    const intervalId = setInterval(fetchData, 3600000);
     return () => clearInterval(intervalId);
   }, []);
 
