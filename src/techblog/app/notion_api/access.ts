@@ -38,12 +38,15 @@ export async function getDataFromDatabase(): Promise<[NotionProperties[], string
             types.forEach((type) => tags.add(type));
 
             return {id, name, createdate, isPrivate, title, types}
-        } catch (e:any) {
+        } catch (e:unknown) {
+            console.error(e);
             return null;
         }
     })
 
-    return [postsProperties.filter((item:NotionProperties) => item !== null), Array.from(tags)]
+    const filteredPosts = postsProperties.filter((item): item is NotionProperties => item !== null);
+
+    return [filteredPosts, Array.from(tags)]
 }
 
 export async function getPagesFromDatabase(id:string) {

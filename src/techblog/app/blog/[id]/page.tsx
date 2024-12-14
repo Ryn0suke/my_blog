@@ -19,20 +19,18 @@ export default async function Page({
       <h3>著者：{pageInfo.author}</h3>
 
       <Markdown
-        children={md}
         components={{
-          code(props) {
-            const { children, className, node, ...rest } = props;
+          code({ children, className, ...rest }) {
             const match = /language-(\w+)/.exec(className || "");
             return match ? (
-                <SyntaxHighlighter
-                    {...rest}
-                    PreTag="div"
-                    language={match[1]}
-                    style={vscDarkPlus}
-                >
-                    {String(children).replace(/\n$/, "")}
-                </SyntaxHighlighter>
+              <SyntaxHighlighter
+                {...rest}
+                PreTag="div"
+                language={match[1]}
+                style={vscDarkPlus}
+              >
+                {String(children).replace(/\n$/, "")}
+              </SyntaxHighlighter>
             ) : (
               <code {...rest} className={className}>
                 {children}
@@ -40,14 +38,9 @@ export default async function Page({
             );
           },
         }}
-      />
+      >
+        {md}
+      </Markdown>
     </>
   );
 }
-            //   <SyntaxHighlighter
-            //     {...rest}
-            //     PreTag="div"
-            //     children={String(children).replace(/\n$/, "")}
-            //     language={match[1]}
-            //     style={vscDarkPlus}
-            //   />
