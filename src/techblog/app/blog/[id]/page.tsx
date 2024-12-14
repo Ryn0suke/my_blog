@@ -13,9 +13,6 @@ export default async function Page({
 
   return (
     <>
-      {/* Markdownの生データを表示（デバッグ用） */}
-      {/* <div>{md}</div> */}
-
       {/* Markdownをレンダリング */}
       <Markdown
         children={md}

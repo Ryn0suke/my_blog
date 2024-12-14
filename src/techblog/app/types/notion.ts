@@ -3,5 +3,12 @@ export type NotionProperties = {
     name: string
     createdate: string
     isPrivate: boolean,
-    title: string
+    title: string,
+    types: string[]
+};
+
+export type NotionTag = {
+    id: string
+    name: string
+    color: string
 };
