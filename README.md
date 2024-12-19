@@ -1,6 +1,9 @@
 # Notion Blog
 Notion APIとNext.jsを使ったブログサイト
 
+![image](https://github.com/user-attachments/assets/c9a53dd9-7b61-4160-94d3-bd4b3eb9eee2)
+
+
 ## 機能
 - Notionのデータベースから作成したページをフロントエンドで受け取り、表示する  
   [ブログサイトはこちら](https://my-blog-27z2.vercel.app/)
