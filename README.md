@@ -3,7 +3,7 @@ Notion APIとNext.jsを使ったブログサイト
 
 ## 機能
 - Notionのデータベースから作成したページをフロントエンドで受け取り、表示する  
-  [ブログサイトはこちら](https://my-blog-27z2.vercel.app/blog/15c7cc4f-bc0f-8053-8a7a-e97b7137a920)
+  [ブログサイトはこちら](https://my-blog-27z2.vercel.app/)
 
 ## 使用したライブラリ
 ### [notion-to-md](https://github.com/souvikinator/notion-to-md)
